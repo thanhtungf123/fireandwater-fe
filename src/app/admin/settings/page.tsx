@@ -81,6 +81,20 @@ export default function SettingsPage() {
         <Field label="Tiêu đề H1 trang chủ">
           <Input value={s.homeH1 ?? ""} onChange={(e) => set("homeH1", e.target.value)} />
         </Field>
+        <label className="flex items-start gap-2 sm:col-span-2">
+          <input
+            type="checkbox"
+            className="mt-0.5"
+            checked={s.homeShowGameTitle ?? true}
+            onChange={(e) => set("homeShowGameTitle", e.target.checked)}
+          />
+          <span className="text-sm text-slate-700">
+            Hiện tên game mặc định phía trên khung game
+            <span className="block text-xs text-slate-400">
+              Ví dụ: “Lửa và Nước 1 – Forest Temple”. Bỏ chọn nếu chỉ muốn hiện khung game.
+            </span>
+          </span>
+        </label>
       </Card>
 
       <Card>

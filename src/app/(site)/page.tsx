@@ -37,7 +37,8 @@ export default async function HomePage() {
     );
   }
 
-  const { h1, defaultGame, mainGames, related, seoContentHtml } = home;
+  const { h1, showGameTitle, defaultGame, mainGames, related, seoContentHtml } =
+    home;
 
   return (
     <>
@@ -66,12 +67,19 @@ export default async function HomePage() {
         {/* Center: khung game + nội dung SEO ngay bên dưới */}
         <div className="order-1 min-w-0 lg:order-2">
           {defaultGame ? (
-            <GamePlayer
-              src={buildIframeSrc(defaultGame.iframeUrl, "")}
-              title={defaultGame.name}
-              width={defaultGame.frameWidth}
-              height={defaultGame.frameHeight}
-            />
+            <>
+              {showGameTitle && (
+                <h2 className="mb-3 text-center font-display text-xl font-bold text-slate-800 sm:text-left sm:text-2xl">
+                  {defaultGame.name}
+                </h2>
+              )}
+              <GamePlayer
+                src={buildIframeSrc(defaultGame.iframeUrl, "")}
+                title={defaultGame.name}
+                width={defaultGame.frameWidth}
+                height={defaultGame.frameHeight}
+              />
+            </>
           ) : (
             <p className="rounded-2xl bg-amber-50 p-4 text-amber-800">
               Chưa có game mặc định. Hãy chạy <code>npm run seed</code> trong

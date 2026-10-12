@@ -124,6 +124,7 @@ export interface SiteLink {
 export interface AdminSettings {
   homeDefaultGameId?: string;
   homeH1?: string;
+  homeShowGameTitle?: boolean;
   homeSeoContentHtml?: string;
   homeRelated?: { mode: "manual" | "auto"; limit: number; gameIds: string[] };
   seoTitle?: string;

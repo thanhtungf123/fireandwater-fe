@@ -26,6 +26,7 @@ export interface GameDTO {
 
 export interface HomePayload {
   h1: string;
+  showGameTitle: boolean;
   seo: { title?: string; description?: string; ogImage?: string };
   seoContentHtml: string | null;
   defaultGame: GameDTO | null;
