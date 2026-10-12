@@ -67,7 +67,7 @@ export default async function HomePage() {
         <div className="order-1 min-w-0 lg:order-2">
           {defaultGame ? (
             <GamePlayer
-              src={buildIframeSrc(defaultGame.iframeUrl, defaultGame.slug)}
+              src={buildIframeSrc(defaultGame.iframeUrl, "")}
               title={defaultGame.name}
               width={defaultGame.frameWidth}
               height={defaultGame.frameHeight}

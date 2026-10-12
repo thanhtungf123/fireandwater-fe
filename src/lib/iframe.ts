@@ -28,15 +28,18 @@ export function isAllowedIframeUrl(
 }
 
 /**
- * Build the final iframe src for a game, attaching gd_sdk_referrer_url pointing
- * at the real game page on our site so GameDistribution ad revenue is tracked
- * correctly (see the provider's "IMPORTANT NOTIFICATION ABOUT EMBEDDING GAMES").
+ * Build the final iframe src for a game, attaching gd_sdk_referrer_url.
+ *
+ * IMPORTANT (GameDistribution): the referrer MUST be the exact page URL where
+ * the iframe is actually embedded — not just the game's own page. On the
+ * homepage that is the site root ("" -> "/"); on a game page it is that slug.
+ * A mismatch can trigger GameDistribution's "not available here" interstitial.
  */
-export function buildIframeSrc(baseUrl: string, slug: string): string {
+export function buildIframeSrc(baseUrl: string, pagePath: string): string {
   try {
     const u = new URL(baseUrl);
     if (u.hostname.toLowerCase() === "html5.gamedistribution.com") {
-      u.searchParams.set("gd_sdk_referrer_url", absoluteUrl(slug));
+      u.searchParams.set("gd_sdk_referrer_url", absoluteUrl(pagePath));
     }
     return u.toString();
   } catch {

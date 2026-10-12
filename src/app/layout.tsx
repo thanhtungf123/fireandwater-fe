@@ -27,7 +27,13 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     description:
       "Chơi Lửa và Nước (Fireboy and Watergirl) trực tiếp trên trình duyệt. Đủ các phần Forest, Light, Ice, Crystal, Elements, Fairy Tales.",
-    icons: chrome?.faviconUrl ? { icon: chrome.faviconUrl } : undefined,
+    icons: chrome?.faviconUrl
+      ? {
+          icon: [{ url: chrome.faviconUrl }],
+          shortcut: [{ url: chrome.faviconUrl }],
+          apple: [{ url: chrome.faviconUrl }],
+        }
+      : undefined,
   };
 }
 
