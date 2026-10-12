@@ -1,0 +1,45 @@
+import { absoluteUrl } from "./site";
+
+/**
+ * Domains allowed to be embedded in an iframe (spec §7).
+ * The Admin can extend this via the AllowedIframeDomain collection, but we
+ * keep a hard-coded baseline so the public site never embeds arbitrary hosts.
+ */
+export const BASELINE_ALLOWED_IFRAME_HOSTS = [
+  "html5.gamedistribution.com",
+  "gamedistribution.com",
+];
+
+export function isAllowedIframeUrl(
+  url: string,
+  extraHosts: string[] = []
+): boolean {
+  try {
+    const u = new URL(url);
+    if (u.protocol !== "https:") return false;
+    const allowed = new Set([
+      ...BASELINE_ALLOWED_IFRAME_HOSTS,
+      ...extraHosts.map((h) => h.toLowerCase()),
+    ]);
+    return allowed.has(u.hostname.toLowerCase());
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Build the final iframe src for a game, attaching gd_sdk_referrer_url pointing
+ * at the real game page on our site so GameDistribution ad revenue is tracked
+ * correctly (see the provider's "IMPORTANT NOTIFICATION ABOUT EMBEDDING GAMES").
+ */
+export function buildIframeSrc(baseUrl: string, slug: string): string {
+  try {
+    const u = new URL(baseUrl);
+    if (u.hostname.toLowerCase() === "html5.gamedistribution.com") {
+      u.searchParams.set("gd_sdk_referrer_url", absoluteUrl(slug));
+    }
+    return u.toString();
+  } catch {
+    return baseUrl;
+  }
+}

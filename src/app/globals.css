@@ -1,0 +1,138 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Baloo 2", system-ui, sans-serif;
+  --font-body: "Be Vietnam Pro", system-ui, sans-serif;
+
+  --fire-1: #ff7a18;
+  --fire-2: #ff2d55;
+  --water-1: #22d3ee;
+  --water-2: #2563eb;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+body {
+  font-family: var(--font-body);
+}
+
+/* App background: soft neutral with a warm->cool wash. */
+.bg-app {
+  background:
+    radial-gradient(1200px 600px at 10% -10%, #fff1e6 0%, transparent 55%),
+    radial-gradient(1200px 600px at 100% 0%, #e6f6ff 0%, transparent 55%),
+    linear-gradient(180deg, #fbfdff 0%, #f3f6fb 100%);
+  background-attachment: fixed;
+}
+
+/* Decorative blurred blobs behind content. */
+.bg-blob {
+  position: absolute;
+  width: 46rem;
+  height: 46rem;
+  border-radius: 9999px;
+  filter: blur(90px);
+  opacity: 0.35;
+}
+.bg-blob-fire {
+  top: -12rem;
+  left: -10rem;
+  background: radial-gradient(circle, var(--fire-1), transparent 65%);
+}
+.bg-blob-water {
+  top: 20rem;
+  right: -12rem;
+  background: radial-gradient(circle, var(--water-2), transparent 65%);
+}
+
+/* Typography helpers */
+.font-display {
+  font-family: var(--font-display);
+}
+.text-fire-water {
+  background: linear-gradient(
+    100deg,
+    var(--fire-1),
+    var(--fire-2) 40%,
+    var(--water-1) 70%,
+    var(--water-2)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Glowing gradient ring around the game player */
+.player-ring {
+  position: relative;
+  border-radius: 1.5rem;
+  padding: 3px;
+  background: linear-gradient(120deg, var(--fire-1), var(--fire-2), var(--water-1), var(--water-2));
+  box-shadow:
+    0 10px 40px -10px rgba(255, 90, 40, 0.35),
+    0 10px 40px -10px rgba(37, 99, 235, 0.35);
+}
+
+/* Owner-authored rich text (homepage + game pages). */
+.seo-content {
+  line-height: 1.75;
+  color: #334155;
+}
+.seo-content h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin: 1.75rem 0 0.75rem;
+}
+.seo-content h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin: 1.25rem 0 0.5rem;
+}
+.seo-content p {
+  margin: 0.75rem 0;
+}
+.seo-content ul,
+.seo-content ol {
+  margin: 0.75rem 0;
+  padding-left: 1.5rem;
+  list-style: revert;
+}
+.seo-content a {
+  color: #2563eb;
+  text-decoration: underline;
+}
+.seo-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.75rem;
+}
+.seo-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+.seo-content th,
+.seo-content td {
+  border: 1px solid #e2e8f0;
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
