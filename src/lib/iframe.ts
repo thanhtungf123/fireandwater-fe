@@ -8,6 +8,8 @@ import { absoluteUrl } from "./site";
 export const BASELINE_ALLOWED_IFRAME_HOSTS = [
   "html5.gamedistribution.com",
   "gamedistribution.com",
+  "www.gameflare.com",
+  "gameflare.com",
 ];
 
 export function isAllowedIframeUrl(
