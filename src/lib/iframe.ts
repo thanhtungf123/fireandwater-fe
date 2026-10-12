@@ -10,6 +10,8 @@ export const BASELINE_ALLOWED_IFRAME_HOSTS = [
   "gamedistribution.com",
   "www.gameflare.com",
   "gameflare.com",
+  "html5.gamemonetize.co",
+  "html5.gamemonetize.com",
 ];
 
 export function isAllowedIframeUrl(
