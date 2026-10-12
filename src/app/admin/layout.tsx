@@ -13,6 +13,7 @@ const NAV = [
   { href: "/admin", label: "Game", exact: true },
   { href: "/admin/settings", label: "Trang chủ" },
   { href: "/admin/pages", label: "Trang tĩnh" },
+  { href: "/admin/iframe-domains", label: "Nguồn game" },
   { href: "/admin/appearance", label: "Giao diện" },
 ];
 

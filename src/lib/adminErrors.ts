@@ -20,7 +20,7 @@ export const GAME_ERRORS: Record<string, FieldError> = {
   iframe_domain_not_allowed: {
     field: "iframeUrl",
     message:
-      "Domain chưa được cho phép. Chỉ dùng link https từ domain đã duyệt (vd: html5.gamedistribution.com).",
+      "Domain chưa được cho phép. Dùng link https từ domain đã duyệt, hoặc thêm domain mới ở mục “Nguồn game”.",
   },
   slug_taken: {
     field: "slug",

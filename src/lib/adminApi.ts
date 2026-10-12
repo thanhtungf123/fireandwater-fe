@@ -172,6 +172,26 @@ export const reorderPages = (slugs: string[]) =>
     body: JSON.stringify({ slugs }),
   });
 
+// ---- Iframe domain whitelist ----
+export interface IframeDomain {
+  _id: string;
+  domain: string;
+  createdAt?: string;
+}
+export interface IframeDomainList {
+  baseline: string[];
+  custom: IframeDomain[];
+}
+export const listIframeDomains = () =>
+  request<IframeDomainList>("/admin/iframe-domains");
+export const addIframeDomain = (domain: string) =>
+  request<IframeDomain>("/admin/iframe-domains", {
+    method: "POST",
+    body: JSON.stringify({ domain }),
+  });
+export const deleteIframeDomain = (id: string) =>
+  request<{ ok: true }>(`/admin/iframe-domains/${id}`, { method: "DELETE" });
+
 // ---- Upload ----
 export async function uploadImage(file: File): Promise<string> {
   const fd = new FormData();
